@@ -5,7 +5,7 @@ INC_DIR = includes
 
 INCLUDE = -I includes
 CFLAGS = -c -g -Iinclude -w $(INCLUDE) -lstdc++ -Wall 
-OBJS = $(OBJ_DIR)/main.o $(OBJ_DIR)/lexer.o $(OBJ_DIR)/utils.o $(OBJ_DIR)/parser.o $(OBJ_DIR)/analyze.o $(OBJ_DIR)/symtab.o $(OBJ_DIR)/code.o $(OBJ_DIR)/codegen.o
+OBJS = $(OBJ_DIR)/main.o $(OBJ_DIR)/lexer.o $(OBJ_DIR)/utils.o $(OBJ_DIR)/parser.o $(OBJ_DIR)/analyze.o $(OBJ_DIR)/symtab.o $(OBJ_DIR)/code.o $(OBJ_DIR)/codegen.o $(OBJ_DIR)/tac.o
 EXE = tiny.exe
 
 $(EXE): $(OBJS) 
@@ -35,5 +35,9 @@ $(OBJ_DIR)/code.o: $(SRC_DIR)/code.cpp
 
 $(OBJ_DIR)/codegen.o: $(SRC_DIR)/codegen.cpp
 	$(CC)  $(CFLAGS) $(SRC_DIR)/codegen.cpp -o $(OBJ_DIR)/codegen.o
+
+$(OBJ_DIR)/tac.o: $(SRC_DIR)/tac.cpp
+	$(CC)  $(CFLAGS) $(SRC_DIR)/tac.cpp -o $(OBJ_DIR)/tac.o
+
 clean:
 	del $(OBJS)

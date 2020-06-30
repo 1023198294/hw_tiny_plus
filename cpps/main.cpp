@@ -4,6 +4,7 @@
 #include "parser.hpp"
 #include "analyze.hpp"
 #include "codegen.hpp"
+#include "tac.hpp"
 #define TEST 1
 int lineno=0;
 bool IsL = false, IsS = false, IsG = false, IsH = false;
@@ -14,7 +15,7 @@ int main(){
     string options;
     #if TEST
         cout<<"In test mode, testing with file \"test.tiny\""<<endl;
-        char filename[120] = "test.tiny";
+        char filename[120] = "test3.tiny";
         
         in = fopen(filename,"r");
         cout<<"[ACTION] : SYNTAX ANALYSIS"<<" START !"<<endl;
@@ -31,7 +32,10 @@ int main(){
         typeCheck(syntaxTree);
         cout<<"Code has passed the type check with 0 error"<<endl;
         cout<<"[ACTION] : TYPE CHECKING "<<" COMPLETE !"<<endl;
-        cout<<"[ACTION] : CODE GENERATION "<<" START !"<<endl;
+        cout<<"[ACTION] : TAC GENERATION" <<" START !"<<endl;
+        tac(syntaxTree);
+        cout<<"[ACTION] : TAC GENERATION" <<" COMPLETE !"<<endl;
+        cout<<"[ACTION] : TM CODE GENERATION "<<" START !"<<endl;
         char codename[120] = "test.tm";
         code = fopen(codename,"w");
         if(code==NULL){
@@ -39,7 +43,7 @@ int main(){
         }
         codeGen(syntaxTree);
         fclose(code);
-        cout<<"[ACTION] : CODE GENERATION "<<" COMPLETE !"<<endl;
+        cout<<"[ACTION] : TM CODE GENERATION "<<" COMPLETE !"<<endl;
         cout<<"[ACTION] : all tasks finished, press \"enter\" to exit."<<endl;
         getchar();
         cout<<endl;

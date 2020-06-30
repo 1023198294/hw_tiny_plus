@@ -42,7 +42,8 @@ typedef enum {Void,Integer,Boolean,Real} ExpType;
 
 //语法树结构
 typedef struct treeNode
-   { struct treeNode * child[MAXCHILDREN];
+   {
+	 struct treeNode * child[MAXCHILDREN];
      struct treeNode * sibling;
      int lineno;
      NodeKind nodekind;
@@ -51,5 +52,6 @@ typedef struct treeNode
              double val;
              char * name; } attr;
      ExpType type; /* for type checking of exps */
+	 int next;
    } TreeNode;
 #endif  

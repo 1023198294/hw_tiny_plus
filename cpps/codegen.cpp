@@ -109,7 +109,8 @@ static void genExp( TreeNode * tree)
 { int loc;
   TreeNode * p1, * p2;
   switch (tree->kind.exp) {
-
+    case ConstRealK:
+    case ConstIntK:
     case ConstK :
       emitComment("-> Const") ;
       /* gen code to load integer constant using LDC */

@@ -198,7 +198,6 @@ TokenType getToken(void){
 			}
 			break;
         }
-
         case STATUS_STR:{
             save = true;
             if(c=='"'){
